@@ -27,7 +27,7 @@ void heapify(int * arr,int n,int i)
 }
 void Build_heap(int *arr,int n)
 {
-    for(int i=n/2;i>=1;i++)
+    for(int i=n/2;i>=1;i--)
     {
         heapify(arr,n,i);
     }
@@ -37,8 +37,8 @@ void deleteelement(int *arr,int n)
    
     for(int i=n;i>=1;i--)
     {
-        swap(&arr[1],&arr[n]);
-        heapify(arr,i,1);
+        swap(&arr[1],&arr[i]);
+        heapify(arr,i-1,1);
     }
 }
 void heap_sort(int *arr,int n)
@@ -70,11 +70,11 @@ int main()
         printf("%d\t",arr[i]);
     }
      printf("\n");
-    // heap_sort(arr,n+1);
-    // printf("Sorted version\n");
-    // for(int i=1;i<=n;i++)
-    // {
-    //     printf("%d\t",arr[i]);
-    // }
+    heap_sort(arr,n+1);
+    printf("Sorted version\n");
+    for(int i=1;i<=n;i++)
+    {
+        printf("%d\t",arr[i]);
+    }
     return 0;
 }
