@@ -70,7 +70,7 @@ int main()
         printf("%d\t",arr[i]);
     }
      printf("\n");
-    heap_sort(arr,n+1);
+    heap_sort(arr,n);
     printf("Sorted version\n");
     for(int i=1;i<=n;i++)
     {
