@@ -4,15 +4,15 @@ char* calculate_prefix(char *T,int m)
 {
     char *pref=(char *)malloc(sizeof(char)*m);
     pref[0]=0;
-    int k=-1;
+    int k=0;
     int q;
     for(q=1;q<m;q++)
     {
-        while (k>-1 && T[k+1]!=T[q])
+        while (k>0 && T[k]!=T[q])
         {
             k=pref[k];
         }
-        if(T[k+1]==T[q])
+        if(T[k]==T[q])
         {
             k=k+1;
         }
@@ -24,21 +24,21 @@ void KMP_matcher(char *T,int n,char *p,int m)
 {
     char *pref=calculate_prefix(p,m);
     printf("%s\n",pref);
-    int q=-1;
+    int q=0;
     for(int i=0;i< n;i++)
     {
-        while(q>0 && p[q+1]!=T[i])
+        while(q>0 && p[q]!=T[i])
         {
-            q=pref[q];
+            q=pref[q-1];
         }
-        if(p[q+1]==T[i])
+        if(p[q]==T[i])
         {
             q=q+1;
         }
-        if(q==m)
+        if(q==m-1)
         {
-            printf("Pattern occurs with shift: %d",i-m);
-            q=pref[q];
+            printf("Pattern occurs with shift: %d\n",i-(m-1));
+            q=pref[q-1];
         }
     }
 }
